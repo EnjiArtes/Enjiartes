@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enji Artes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            color: #FFFFFF; /* Definindo a cor do texto como branco */
+            font-family: 'Roboto', sans-serif;
+            background-color: #365492;
+            margin: 0;
+            padding: 0;
+            background-image: url('Fundo.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        h1 {
+            font-family: 'Magic Retro', cursive;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            font-family: 'Magic Retro', cursive;
+            text-decoration: none;
+            color: #FFFFFF; /* Definindo a cor do texto como branco */
+        }
+
+        .story, .comic-scroll {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .story img, .comic img {
+            width: 200px;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .book-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .book {
+            width: 200px;
+            height: 300px;
+            background-color: #ccc;
+            position: relative;
+            perspective: 1000px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .cover {
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: left;
+            transition: transform 0.5s;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .open {
+            transform: rotateY(-90deg);
+        }
+
+        .synopsis {
+            display: none;
+            padding: 20px;
+            background-color: #f0f0f0;
+            color: #000000; /* Definindo a cor do texto da sinopse como preto */
+        }
+
+        .book-title {
+            text-align: center;
+        }
+
+        footer {
+            background-color: #fff; /* Defina a cor de fundo desejada */
+            padding: 20px;
+            text-align: center;
+            color: #333; /* Defina a cor do texto desejada */
+            margin-top: 20px; /* Adiciona espaço acima do rodapé */
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            margin-right: 20px; /* Ajuste o espaçamento entre o logo e as informações de contato conforme necessário */
+        }
+
+        .logo img {
+            width: 100px; /* Ajuste o tamanho da logo conforme necessário */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Capa1.png" alt="Sua logo" class="logo" style="width: 200px; height: auto; display: block; margin: 0 auto;">
+        <h1>Enji Artes</h1>
+        <nav>
+            <ul>
+                <li><a href="#portfolio">Portfólio</a></li>
+                <li><a href="#comics">Quadrinhos</a></li>
+                <li><a href="#stories">Histórias</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="portfolio">
+            <h2><a href="#portfolio">Portfólio color:</a></h2>
+            <a href="https://www.instagram.com/enjiartes?igshid=bXlwYmplcWxzbnVp">Visite nosso Instagram</a>
+            <div class="book" onclick="toggleBook(event, 'portfolio')">
+                <div class="cover">
+                    <img src="helenepetala.png" alt="Capa do Portfólio">
+                </div>
+                  <div class="cover">
+                    <img src="helenepetala.png" alt="Capa do Portfólio">
+                </div>
+                <div class="synopsis" id="synopsisPortfolio">
+                    <!-- Aqui você pode adicionar uma sinopse do seu portfólio -->
+                    <h2>Sinopse:</h2>
+                    <p>Descrição do seu portfólio...</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="comics">
+            <h2><a href="#comics">Quadrinhos</a></h2>
+            <div class="comic-scroll">
+                <div class="comic">
+                    <h3>Título do Quadrinho</h3>
+                    <p>Sinopse do quadrinho...</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="stories">
+            <h2><a href="#stories">📖 Histórias</a></h2>
+            <div class="book-container">
+                <div class="book" onclick="toggleBook(event, 1)">
+                    <div class="cover">
+                        <img src="YouandmeCapa.png" alt="Capa da História 1">
+                    </div>
+                    <div class="synopsis" id="synopsis1">
+                        <h2>Sinopse:</h2>
+                        <p>Aqui vai a sinopse da sua história 1...</p>
+                    </div>
+                </div>
+
+                <div class="book" onclick="toggleBook(event, 2)">
+                    <div class="cover">
+                        <img src="IMAcapa.png" alt="Capa da História 2">
+                    </div>
+                    <div class="synopsis" id="synopsis2">
+                        <h2>Sinopse:</h2>
+                        <p>Aqui vai a sinopse da sua história 2...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section id="contact">
+            <h2>Contato</h2>
+            <div class="footer-content">
+                <div class="logo">
+                    <a href="https://www.instagram.com/enjiartes?igsh=bXlwYmplcWxzbnVp"><img src="Insta.png" alt="Sua Logo" width="50px" height="auto"></a>
+                </div>
+                <div class="contact-info">
+                    <!-- Adicione suas informações de contato aqui -->
+                    <p>Seus detalhes de contato aqui...</p>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    <script>
+        function toggleBook(event, bookNumber) {
+            var cover = event.currentTarget.querySelector('.cover');
+            var synopsis = document.getElementById(`synopsis${bookNumber}`);
+
+            if (cover.classList.contains('open')) {
+                cover.classList.remove('open');
+                synopsis.style.display = 'none';
+            } else {
+                cover.classList.add('open');
+                synopsis.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
